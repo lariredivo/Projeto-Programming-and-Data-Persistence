@@ -36,8 +36,12 @@ namespace Funcionarios2
 
         private void btLimpar_Click(object sender, EventArgs e)
         {
+            limparCampos();
+        }
+        private void limparCampos()
+        {
             tbNome.Clear();
-            tbSetor.Clear();
+            tbSetor.Clear()
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -101,7 +105,7 @@ namespace Funcionarios2
                 realizaConexacoBD.Close();
                 MessageBox.Show("Inserido com sucesso");
                 atualizaGrid();
-                //limparCampos();
+                limparCampos();
 
             }
             catch (Exception ex)
@@ -113,6 +117,60 @@ namespace Funcionarios2
         private void tbNome_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void bAlterar_Click(object sender, EventArgs e)
+        {
+            MySqlConnectionStringBuilder conexaoBD = conexaoBanco();
+            MySqlConnection realizaConexacoBD = new MySqlConnection(conexaoBD.ToString());
+            try
+            {
+                realizaConexacoBD.Open(); //Abre a conexão com o banco
+
+                MySqlCommand comandoMySql = realizaConexacoBD.CreateCommand(); //Crio um comando SQL
+                comandoMySql.CommandText = "UPDATE filme SET nomeFuncionario = '" + tbNome.Text + "', " +
+                    "dataNascimento = '" + Convert.ToInt32(dtpNascimento.Text) + "', " +
+                    "dataContratacao = '" + Convert.ToInt32(dtpContratacao.Text) + "', " +
+                    "setorEmpresa  = " + tbSetor.Text +
+                    " WHERE idFuncionario = " + tbID.Text + "";
+                comandoMySql.ExecuteNonQuery();
+
+                realizaConexacoBD.Close(); // Fecho a conexão com o banco
+                MessageBox.Show("Atualizado com sucesso"); //Exibo mensagem de aviso
+                atualizaGrid();
+                limparCampos();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Não foi possivel abrir a conexão! ");
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void bDeletar_Click(object sender, EventArgs e)
+        {
+            MySqlConnectionStringBuilder conexaoBD = conexaoBanco();
+            MySqlConnection realizaConexacoBD = new MySqlConnection(conexaoBD.ToString());
+            try
+            {
+                realizaConexacoBD.Open(); //Abre a conexão com o banco
+
+                MySqlCommand comandoMySql = realizaConexacoBD.CreateCommand(); //Crio um comando SQL
+                
+                comandoMySql.CommandText = "UPDATE funcionario SET ativoFuncionario = 0 WHERE idFuncionario = " + tbID.Text + "";
+
+                comandoMySql.ExecuteNonQuery();
+
+                realizaConexacoBD.Close(); // Fecho a conexão com o banco
+                MessageBox.Show("Deletado com sucesso"); //Exibo mensagem de aviso
+                atualizaGrid();
+                limparCampos();
+            }
+            catch (Exception ex)
+            {
+                //MessageBox.Show("Não foi possivel abrir a conexão! ");
+                Console.WriteLine(ex.Message);
+            }
         }
     }
     

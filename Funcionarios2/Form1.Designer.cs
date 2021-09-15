@@ -45,6 +45,8 @@ namespace Funcionarios2
             this.collNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collContratacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.collSetor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bAlterar = new System.Windows.Forms.Button();
+            this.bDeletar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +128,7 @@ namespace Funcionarios2
             // 
             // btLimpar
             // 
-            this.btLimpar.Location = new System.Drawing.Point(176, 170);
+            this.btLimpar.Location = new System.Drawing.Point(79, 169);
             this.btLimpar.Name = "btLimpar";
             this.btLimpar.Size = new System.Drawing.Size(120, 41);
             this.btLimpar.TabIndex = 8;
@@ -136,7 +138,7 @@ namespace Funcionarios2
             // 
             // btInserir
             // 
-            this.btInserir.Location = new System.Drawing.Point(481, 170);
+            this.btInserir.Location = new System.Drawing.Point(372, 170);
             this.btInserir.Name = "btInserir";
             this.btInserir.Size = new System.Drawing.Size(104, 41);
             this.btInserir.TabIndex = 9;
@@ -196,12 +198,34 @@ namespace Funcionarios2
             this.collSetor.Name = "collSetor";
             this.collSetor.Width = 150;
             // 
+            // bAlterar
+            // 
+            this.bAlterar.Location = new System.Drawing.Point(225, 169);
+            this.bAlterar.Name = "bAlterar";
+            this.bAlterar.Size = new System.Drawing.Size(124, 42);
+            this.bAlterar.TabIndex = 11;
+            this.bAlterar.Text = "Alterar";
+            this.bAlterar.UseVisualStyleBackColor = true;
+            this.bAlterar.Click += new System.EventHandler(this.bAlterar_Click);
+            // 
+            // bDeletar
+            // 
+            this.bDeletar.Location = new System.Drawing.Point(493, 170);
+            this.bDeletar.Name = "bDeletar";
+            this.bDeletar.Size = new System.Drawing.Size(104, 41);
+            this.bDeletar.TabIndex = 12;
+            this.bDeletar.Text = "Deletar";
+            this.bDeletar.UseVisualStyleBackColor = true;
+            this.bDeletar.Click += new System.EventHandler(this.bDeletar_Click);
+            // 
             // Funcionários
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(866, 450);
             this.ControlBox = false;
+            this.Controls.Add(this.bDeletar);
+            this.Controls.Add(this.bAlterar);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btInserir);
             this.Controls.Add(this.btLimpar);
@@ -214,6 +238,7 @@ namespace Funcionarios2
             this.Controls.Add(this.dtpNascimento);
             this.Controls.Add(this.lNome);
             this.Name = "Funcionários";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Funcionários";
             this.Load += new System.EventHandler(this.Funcionários_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
@@ -240,6 +265,8 @@ namespace Funcionarios2
         private System.Windows.Forms.DataGridViewTextBoxColumn collNascimento;
         private System.Windows.Forms.DataGridViewTextBoxColumn collContratacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn collSetor;
+        private System.Windows.Forms.Button bAlterar;
+        private System.Windows.Forms.Button bDeletar;
     }
 }
 
